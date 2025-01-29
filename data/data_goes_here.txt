@@ -1,0 +1,8 @@
+Structure of the folder:
+
+data
+ |
+ |_pbb (output from script)
+ |_pickles
+ |_raw (output from script)
+ |_uncleaned (place data here)
