@@ -5,6 +5,12 @@ import warnings
 warnings.filterwarnings("ignore")
 
 def process_brainwaves_data(input_file, id):
+    # Check if the file has already been processed
+    raw_output_file = f'../data/raw/raw_{id}.csv'
+    if os.path.exists(raw_output_file):
+        print(f'Skipping {id} as it has already been processed.')
+        return
+    
     # Read the input CSV file
     df = pd.read_csv(input_file)
 
@@ -81,6 +87,8 @@ def process_brainwaves_data(input_file, id):
     sessions_df.reset_index(drop=True, inplace=True)
     sessions_df.set_index('session_id', inplace=True)
     sessions_df.to_csv(f'../data/raw/raw_{id}.csv')
+    
+    print(f'ID: {id} | {input_file} processed successfully')
 
 # Example usage
 data_dir = "../data/uncleaned/"
@@ -89,4 +97,3 @@ for filename in os.listdir(data_dir):
         file_path = os.path.join(data_dir, filename)
         file_id = os.path.splitext(filename)[0].split('_')[-1]
         process_brainwaves_data(file_path, file_id)
-        print(f'ID: {file_id} | {file_path} processed successfully')
