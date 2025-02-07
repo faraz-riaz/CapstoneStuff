@@ -53,7 +53,7 @@ def process_brainwaves_data(input_file, id):
 
     pbd_df.set_index('session_id', inplace=True)
     pbd_df.drop(columns=['timestamp_delta'], inplace=True)
-    pbd_df.to_csv(f'../data/pbb/power_by_band_{id}.csv')
+    pbd_df.to_csv(f'../data/old/pbb/power_by_band_{id}.csv')
     
 
     # Separating raw readings
@@ -80,7 +80,7 @@ def process_brainwaves_data(input_file, id):
 
     raw_df.set_index('session_id', inplace=True)
     raw_df.drop(columns=['timestamp_delta'], inplace=True)
-    raw_df.to_csv(f'../data/raw/raw_{id}.csv')
+    raw_df.to_csv(f'../data/old/raw/raw_{id}.csv')
 
 # Example usage
 data_dir = "../data/uncleaned/"
